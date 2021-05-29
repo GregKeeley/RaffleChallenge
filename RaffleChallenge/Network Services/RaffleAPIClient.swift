@@ -10,9 +10,9 @@ import Foundation
 class RaffleAPIClient {
     
     // Fetches a list of all raffles available on API
-    static func fetchAllRaffles() {
+    static func fetchAllRaffles(completion: @escaping (Result<Raffle, Error>) -> ()) {
         
-      //  https://raffle-fs-app.herokuapp.com/api/raffles
+      // var endpoint = "https://raffle-fs-app.herokuapp.com/api/raffles"
         
     }
     
