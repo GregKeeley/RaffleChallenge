@@ -10,6 +10,7 @@ import XCTest
 
 class RaffleChallengeTests: XCTestCase {
     
+    //MARK:- Model Tests
     func testRaffleModel() {
         let jsonData = """
             {
@@ -49,6 +50,20 @@ class RaffleChallengeTests: XCTestCase {
             XCTAssertEqual(expectedFirstName, firstName)
         } catch {
             XCTFail("Decoding Error: \(error)")
+        }
+    }
+    
+    //MARK:- APIClient Tests
+    func testFetchAllRaffles() {
+        var raffles = [Raffle]()
+        RaffleAPIClient.fetchAllRaffles { (results) in
+            switch results {
+            case .failure(let appError):
+                XCTFail("Failed to fetch raffles: \(appError)")
+            case .success(let data):
+                raffles = data
+                XCTAssertGreaterThan(0, raffles.count)
+            }
         }
     }
 }
