@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		37EFA9642661653F00410631 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EFA9632661653F00410631 /* AppDelegate.swift */; };
 		37EFA9662661653F00410631 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EFA9652661653F00410631 /* SceneDelegate.swift */; };
-		37EFA9682661653F00410631 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EFA9672661653F00410631 /* ViewController.swift */; };
+		37EFA9682661653F00410631 /* MainRafflesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EFA9672661653F00410631 /* MainRafflesViewController.swift */; };
 		37EFA96B2661653F00410631 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37EFA9692661653F00410631 /* Main.storyboard */; };
 		37EFA96D2661654000410631 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37EFA96C2661654000410631 /* Assets.xcassets */; };
 		37EFA9702661654000410631 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37EFA96E2661654000410631 /* LaunchScreen.storyboard */; };
@@ -44,7 +44,7 @@
 		37EFA9602661653F00410631 /* RaffleChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaffleChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37EFA9632661653F00410631 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37EFA9652661653F00410631 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		37EFA9672661653F00410631 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		37EFA9672661653F00410631 /* MainRafflesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRafflesViewController.swift; sourceTree = "<group>"; };
 		37EFA96A2661653F00410631 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		37EFA96C2661654000410631 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37EFA96F2661654000410631 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -154,7 +154,7 @@
 		37EFA9942661659F00410631 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				37EFA9672661653F00410631 /* ViewController.swift */,
+				37EFA9672661653F00410631 /* MainRafflesViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -325,7 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37EFA9A426618D1F00410631 /* ParticipantViewModel.swift in Sources */,
-				37EFA9682661653F00410631 /* ViewController.swift in Sources */,
+				37EFA9682661653F00410631 /* MainRafflesViewController.swift in Sources */,
 				37EFA99E26618C8900410631 /* RaffleModel.swift in Sources */,
 				37EFA99C26618AE200410631 /* RaffleAPIClient.swift in Sources */,
 				37EFA9642661653F00410631 /* AppDelegate.swift in Sources */,

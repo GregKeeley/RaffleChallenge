@@ -10,7 +10,7 @@ import Foundation
 struct Raffle: Codable {
     
     var id: Int
-    var name: String, createdAt: String, raffledAt: String?, winnerID: String?, secretToken: String?
+    var name: String, createdAt: String, raffledAt: String?, winnerID: Int?, secretToken: String?
     
     private enum CodingKeys: String, CodingKey {
         case id
@@ -28,7 +28,7 @@ extension Raffle {
         self.name = dictionary["name"] as? String ?? "Name not available"
         self.createdAt = dictionary["createdAt"] as? String ?? "Creation date not available"
         self.raffledAt = dictionary["raffledAt"] as? String ?? "Raffle date not available"
-        self.winnerID = dictionary["winnerID"] as? String ?? "Winner ID not available"
+        self.winnerID = dictionary["winnerID"] as? Int ?? -1
         self.secretToken = dictionary["secretToken"] as? String ?? "Secret token not available"
     }
 }
