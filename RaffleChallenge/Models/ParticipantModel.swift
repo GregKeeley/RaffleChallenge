@@ -9,8 +9,8 @@ import Foundation
 
 struct Participant: Codable {
     
-    var participantID: Int
-    var raffleID: String, firstName: String, lastName: String, email: String, phone: String?, registeredAt: String
+    var participantID: Int, raffleID: Int
+    var firstName: String, lastName: String, email: String, phone: String?, registeredAt: String
     
     private enum CodingKeys: String, CodingKey {
         case participantID = "id"
@@ -26,7 +26,7 @@ struct Participant: Codable {
 extension Participant {
     init(_ dictionary: [String: Any]) {
         self.participantID = dictionary["id"] as? Int ?? -1
-        self.raffleID = dictionary["raffleID"] as? String ?? "No raffle ID available"
+        self.raffleID = dictionary["raffleID"] as? Int ?? -1
         self.firstName = dictionary["firstName"] as? String ?? "No name available"
         self.lastName = dictionary["lastName"] as? String ?? "Last name not avaiable"
         self.email = dictionary["email"] as? String ?? "email not available"

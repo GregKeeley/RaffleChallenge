@@ -10,7 +10,7 @@ import Foundation
 struct Raffle: Codable {
     
     var id: Int
-    var name: String, createdAt: String, raffledAt: String, winnerID: String, secretToken: String?
+    var name: String, createdAt: String, raffledAt: String?, winnerID: String?, secretToken: String?
     
     private enum CodingKeys: String, CodingKey {
         case id
