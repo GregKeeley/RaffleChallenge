@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,30 +19,31 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOL-HD-Muh">
-                        <rect key="frame" x="16" y="0.0" width="348" height="21"/>
+                        <rect key="frame" x="16" y="16" width="348" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of participants" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lm8-O3-oQu">
-                        <rect key="frame" x="16" y="29" width="348" height="21"/>
+                        <rect key="frame" x="16" y="45" width="348" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="created date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y3x-jn-JzU">
-                        <rect key="frame" x="16" y="58" width="348" height="21"/>
+                        <rect key="frame" x="16" y="74" width="348" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Winner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSI-B7-OmL">
-                        <rect key="frame" x="16" y="87" width="348" height="21"/>
+                        <rect key="frame" x="16" y="103" width="348" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" systemColor="systemGray5Color"/>
                 <constraints>
                     <constraint firstItem="uOL-HD-Muh" firstAttribute="leading" secondItem="JLj-a4-apW" secondAttribute="leading" constant="16" id="4Gr-rE-UiS"/>
                     <constraint firstAttribute="trailing" secondItem="Y3x-jn-JzU" secondAttribute="trailing" constant="16" id="9Z9-HI-Src"/>
@@ -51,12 +53,13 @@
                     <constraint firstItem="rSI-B7-OmL" firstAttribute="leading" secondItem="Y3x-jn-JzU" secondAttribute="leading" id="Mpq-5z-aDx"/>
                     <constraint firstItem="Lm8-O3-oQu" firstAttribute="top" secondItem="uOL-HD-Muh" secondAttribute="bottom" constant="8" symbolic="YES" id="Qhm-f5-Ljp"/>
                     <constraint firstItem="Lm8-O3-oQu" firstAttribute="leading" secondItem="JLj-a4-apW" secondAttribute="leading" constant="16" id="crL-6Y-znm"/>
-                    <constraint firstItem="uOL-HD-Muh" firstAttribute="top" secondItem="JLj-a4-apW" secondAttribute="top" id="ieO-VH-ZmY"/>
+                    <constraint firstItem="uOL-HD-Muh" firstAttribute="top" secondItem="JLj-a4-apW" secondAttribute="top" constant="16" id="ieO-VH-ZmY"/>
                     <constraint firstItem="rSI-B7-OmL" firstAttribute="trailing" secondItem="Y3x-jn-JzU" secondAttribute="trailing" id="lan-hX-VkZ"/>
                     <constraint firstItem="Y3x-jn-JzU" firstAttribute="top" secondItem="Lm8-O3-oQu" secondAttribute="bottom" constant="8" symbolic="YES" id="r8t-a4-wVd"/>
                     <constraint firstItem="rSI-B7-OmL" firstAttribute="top" secondItem="Y3x-jn-JzU" secondAttribute="bottom" constant="8" symbolic="YES" id="vXv-gW-ht7"/>
                 </constraints>
             </collectionViewCellContentView>
+            <color key="backgroundColor" systemColor="secondaryLabelColor"/>
             <size key="customSize" width="380" height="126"/>
             <connections>
                 <outlet property="createdDateLabel" destination="Y3x-jn-JzU" id="jGR-MG-GnU"/>
@@ -64,7 +67,15 @@
                 <outlet property="raffleNameLabel" destination="uOL-HD-Muh" id="X28-4L-sS6"/>
                 <outlet property="winnerNameLabel" destination="rSI-B7-OmL" id="b45-ep-VrX"/>
             </connections>
-            <point key="canvasLocation" x="269.56521739130437" y="137.27678571428569"/>
+            <point key="canvasLocation" x="269.56521739130437" y="136.60714285714286"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

@@ -26,7 +26,7 @@ extension Raffle {
     init(_ dictionary: [String: Any]) {
         self.id = dictionary["id"] as? Int ?? -1
         self.name = dictionary["name"] as? String ?? "Name not available"
-        self.createdAt = dictionary["createdAt"] as? String ?? "Creation date not available"
+        self.createdAt = dictionary["createdAt"] as? String ?? "Created date not available"
         self.raffledAt = dictionary["raffledAt"] as? String ?? "Raffle date not available"
         self.winnerID = dictionary["winnerID"] as? Int ?? -1
         self.secretToken = dictionary["secretToken"] as? String ?? "Secret token not available"

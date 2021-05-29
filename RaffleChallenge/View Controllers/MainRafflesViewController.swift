@@ -12,7 +12,11 @@ class MainRafflesViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     //MARK:- Variables/Constants
-    var raffles = [Raffle]()
+    var raffles = [Raffle]() {
+        didSet {
+            navigationItem.title = "All Raffles(\(raffles.count))"
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,12 +31,15 @@ class MainRafflesViewController: UIViewController {
         collectionView.delegate = self
         collectionView.register(UINib(nibName: "RaffleCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "raffleCell")
     }
+    
     func configureViewController() {
         navigationItem.title = "All Raffles"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        
+        let rightBarButtonItem = UIBarButtonItem(title: "Create", style: .plain, target: self, action: #selector(createRaffleButtonPressed(_:)))
+        navigationItem.rightBarButtonItem = rightBarButtonItem
     }
+    
     func fetchAllRaffles() {
         RaffleAPIClient.fetchAllRaffles { (results) in
             switch results {
@@ -46,6 +53,9 @@ class MainRafflesViewController: UIViewController {
                 }
             }
         }
+    }
+    @objc func createRaffleButtonPressed(_ sender: UIBarButtonItem) {
+        print("Add raffle pressed")
     }
 }
 
@@ -64,8 +74,18 @@ extension MainRafflesViewController: UICollectionViewDataSource {
         return cell
     }
     
-    //MARK:- Collection View Delegate
 }
+
+//MARK:- Collection View Delegate
 extension MainRafflesViewController: UICollectionViewDelegate {
     
+}
+extension MainRafflesViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let maxSize: CGSize = UIScreen.main.bounds.size
+        let itemHeight: CGFloat = maxSize.height * 0.15
+        let itemWidth: CGFloat = maxSize.width
+        return CGSize(width: itemWidth, height: itemHeight)
+    }
+
 }
