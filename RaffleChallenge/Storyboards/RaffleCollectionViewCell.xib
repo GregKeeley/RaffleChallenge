@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="raffleCell" id="v69-Bn-OYy" customClass="RaffleCollectionViewCell" customModule="RaffleChallenge" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="380" height="126"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JLj-a4-apW">
+                <rect key="frame" x="0.0" y="0.0" width="380" height="126"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOL-HD-Muh">
+                        <rect key="frame" x="16" y="0.0" width="348" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of participants" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lm8-O3-oQu">
+                        <rect key="frame" x="16" y="29" width="348" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="created date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y3x-jn-JzU">
+                        <rect key="frame" x="16" y="58" width="348" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Winner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSI-B7-OmL">
+                        <rect key="frame" x="16" y="87" width="348" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="uOL-HD-Muh" firstAttribute="leading" secondItem="JLj-a4-apW" secondAttribute="leading" constant="16" id="4Gr-rE-UiS"/>
+                    <constraint firstAttribute="trailing" secondItem="Y3x-jn-JzU" secondAttribute="trailing" constant="16" id="9Z9-HI-Src"/>
+                    <constraint firstAttribute="trailing" secondItem="uOL-HD-Muh" secondAttribute="trailing" constant="16" id="CdP-w9-lb3"/>
+                    <constraint firstItem="Y3x-jn-JzU" firstAttribute="leading" secondItem="JLj-a4-apW" secondAttribute="leading" constant="16" id="Hit-Vs-BBc"/>
+                    <constraint firstAttribute="trailing" secondItem="Lm8-O3-oQu" secondAttribute="trailing" constant="16" id="KwQ-jS-YDT"/>
+                    <constraint firstItem="rSI-B7-OmL" firstAttribute="leading" secondItem="Y3x-jn-JzU" secondAttribute="leading" id="Mpq-5z-aDx"/>
+                    <constraint firstItem="Lm8-O3-oQu" firstAttribute="top" secondItem="uOL-HD-Muh" secondAttribute="bottom" constant="8" symbolic="YES" id="Qhm-f5-Ljp"/>
+                    <constraint firstItem="Lm8-O3-oQu" firstAttribute="leading" secondItem="JLj-a4-apW" secondAttribute="leading" constant="16" id="crL-6Y-znm"/>
+                    <constraint firstItem="uOL-HD-Muh" firstAttribute="top" secondItem="JLj-a4-apW" secondAttribute="top" id="ieO-VH-ZmY"/>
+                    <constraint firstItem="rSI-B7-OmL" firstAttribute="trailing" secondItem="Y3x-jn-JzU" secondAttribute="trailing" id="lan-hX-VkZ"/>
+                    <constraint firstItem="Y3x-jn-JzU" firstAttribute="top" secondItem="Lm8-O3-oQu" secondAttribute="bottom" constant="8" symbolic="YES" id="r8t-a4-wVd"/>
+                    <constraint firstItem="rSI-B7-OmL" firstAttribute="top" secondItem="Y3x-jn-JzU" secondAttribute="bottom" constant="8" symbolic="YES" id="vXv-gW-ht7"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="380" height="126"/>
+            <connections>
+                <outlet property="createdDateLabel" destination="Y3x-jn-JzU" id="jGR-MG-GnU"/>
+                <outlet property="numOfParticipantsLabel" destination="Lm8-O3-oQu" id="SNr-WW-Bu7"/>
+                <outlet property="raffleNameLabel" destination="uOL-HD-Muh" id="X28-4L-sS6"/>
+                <outlet property="winnerNameLabel" destination="rSI-B7-OmL" id="b45-ep-VrX"/>
+            </connections>
+            <point key="canvasLocation" x="269.56521739130437" y="137.27678571428569"/>
+        </collectionViewCell>
+    </objects>
+</document>
