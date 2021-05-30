@@ -22,7 +22,26 @@ class CreateRaffleViewController: UIViewController {
 
     }
     @IBAction func createRaffleButtonPressed(_ sender: UIButton) {
-        print("Create raffle button pressed")
+        if let raffleName = raffleNameTextField.text {
+            if let secretToken = secretTokenTextField.text {
+                RaffleAPIClient.createRaffle(name: raffleName, secretToken: secretToken) { (result) in
+                    switch result {
+                    case .failure(let appError):
+                        print("Unable to create raffle: \(appError)")
+                    case .success:
+                        DispatchQueue.main.async {
+                            print("Raffle created successfully!")
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                        //TODO: Show alert - remind user to remember the secret token to select a winner...!
+                    }
+                }
+            } else {
+                print("Secret token empty, All fields required")
+            }
+        } else {
+            print("Raffle name empty, all fields required")
+        }
     }
     
 }

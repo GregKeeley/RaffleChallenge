@@ -23,7 +23,9 @@ class MainRafflesViewController: UIViewController {
         configureViewController()
         configureCollectionView()
         fetchAllRaffles()
-        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        fetchAllRaffles()
     }
     //MARK:- Functions
     func configureCollectionView() {
@@ -45,7 +47,8 @@ class MainRafflesViewController: UIViewController {
                 print("Could not fetch all raffles: \(appError)")
             case .success(let raffleData):
                 DispatchQueue.main.async {
-                    self.raffles = raffleData
+                    let sortedRaffles = raffleData.sorted( by: { $0.createdAt > $1.createdAt })
+                    self.raffles = sortedRaffles
                     self.collectionView.reloadData()
                 }
             }
