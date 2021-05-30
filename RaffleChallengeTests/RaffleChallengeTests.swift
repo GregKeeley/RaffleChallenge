@@ -111,21 +111,36 @@ class RaffleChallengeTests: XCTestCase {
 //        wait(for: [exp], timeout: 15.0)
 //    }
     
-    func testAddParticipantToRaffle() {
-        let firstName = "George"
-        let lastName = "Glass"
-        let email = "george@gmail.com"
-        let phone = "(555)555-5555"
-        let exp = XCTestExpectation(description: "Participant successfully added to raffle")
-        RaffleAPIClient.addParticipantToRaffle(firstName: firstName, lastName: lastName, email: email, phone: phone, raffleID: 150) { (result) in
-            switch result {
-            case .failure(let appError):
-                XCTFail("Failed to add participant to raffle: \(appError)")
-            case .success(let data):
-                XCTAssertTrue(data)
-                exp.fulfill()
-            }
-        }
-        wait(for: [exp], timeout: 15.0)
-    }
+//    func testAddParticipantToRaffle() {
+//        let firstName = "George"
+//        let lastName = "Glass"
+//        let email = "george@gmail.com"
+//        let phone = "(555)555-5555"
+//        let exp = XCTestExpectation(description: "Participant successfully added to raffle")
+//        RaffleAPIClient.addParticipantToRaffle(firstName: firstName, lastName: lastName, email: email, phone: phone, raffleID: 150) { (result) in
+//            switch result {
+//            case .failure(let appError):
+//                XCTFail("Failed to add participant to raffle: \(appError)")
+//            case .success(let data):
+//                XCTAssertTrue(data)
+//                exp.fulfill()
+//            }
+//        }
+//        wait(for: [exp], timeout: 15.0)
+//    }
+//    func testSelectWinnerFromRaffle() {
+//        let secretToken = "gk123"
+//        let raffleID = 150
+//        let exp = XCTestExpectation(description: "Winner has been selected")
+//        RaffleAPIClient.selectRaffleWinner(secret: secretToken, raffleID: raffleID) { (result) in
+//            switch result {
+//            case .failure(let appError):
+//                XCTFail("Failed to select a winner: \(appError)")
+//            case .success(let data):
+//                XCTAssertTrue(data)
+//                exp.fulfill()
+//            }
+//        }
+//        wait(for: [exp], timeout: 15.0)
+//    }
 }
