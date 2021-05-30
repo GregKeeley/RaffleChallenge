@@ -56,28 +56,6 @@ class RaffleAPIClient {
         }
     }
     
-    // Create a raffle
-    /// Uses a POST request
-    static func createRaffle(name: String, secretToken: String, completion: @escaping (Result<Bool, AppError>) -> ()) {
-        let parameters = "{\n\t\"name\": \"\(name)\",\n\t\"secret_token\": \"\(secretToken)\"\n}"
-        let postData = parameters.data(using: .utf8)
-
-        var request = URLRequest(url: URL(string: "https://raffle-fs-app.herokuapp.com/api/raffles")!,timeoutInterval: Double.infinity)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        request.httpMethod = "POST"
-        request.httpBody = postData
-
-        NetworkHelper.shared.performDataTask(with: request) { (result) in
-            switch result {
-            case .failure(let appError):
-                completion(.failure(.networkClientError(appError)))
-            case.success:
-                completion(.success(true))
-            }
-        }
-    }
-    
     // Fetches a list of all participants for a raffle, using the raffle ID
     static func fetchParticipantsForRaffle(raffleID: Int, completion: @escaping (Result<[Participant], AppError>) -> ()) {
         let endpoint = "https://raffle-fs-app.herokuapp.com/api/raffles/\(raffleID)/participants"
@@ -101,13 +79,52 @@ class RaffleAPIClient {
         }
         
     }
-    
+    // Create a raffle
+    /// Uses a POST request
+    static func createRaffle(name: String, secretToken: String, completion: @escaping (Result<Bool, AppError>) -> ()) {
+        let parameters = "{\n\t\"name\": \"\(name)\",\n\t\"secret_token\": \"\(secretToken)\"\n}"
+        let postData = parameters.data(using: .utf8)
+
+        var request = URLRequest(url: URL(string: "https://raffle-fs-app.herokuapp.com/api/raffles")!,timeoutInterval: Double.infinity)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        request.httpMethod = "POST"
+        request.httpBody = postData
+
+        NetworkHelper.shared.performDataTask(with: request) { (result) in
+            switch result {
+            case .failure(let appError):
+                completion(.failure(.networkClientError(appError)))
+            case.success:
+                completion(.success(true))
+            }
+        }
+    }
     
     // Signs up participant to a raffle
-    ///
     /// Uses a POST request
-    static func addParticipantToRaffle(name: String, email: String, phone: String?, raffleID: Int) {
-        //        var endpoint = "https://raffle-fs-app.herokuapp.com/api/raffles/\(raffleID)/participants"
+    static func addParticipantToRaffle(firstName: String, lastName: String, email: String, phone: String?, raffleID: Int, completion:  @escaping (Result<Bool, AppError>) -> ()) {
+        let endpoint = "https://raffle-fs-app.herokuapp.com/api/raffles/\(raffleID)/participants"
+        let parameters = "{ \n\"firstname\": \"\(firstName)\", \n\"lastname\": \"\(lastName)\", \n\"email\": \"\(email)\", \n\"phone\": \"\(phone ?? "N/A")\"\n}"
+        let postData = parameters.data(using: .utf8)
+        
+        guard let url = URL(string: endpoint) else {
+            completion(.failure(.badURL(endpoint)))
+            return
+        }
+        var request = URLRequest(url: url,timeoutInterval: Double.infinity)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        request.httpMethod = "POST"
+        request.httpBody = postData
+        NetworkHelper.shared.performDataTask(with: request) { (result) in
+            switch result {
+            case .failure(let appError):
+                completion(.failure(.networkClientError(appError)))
+            case.success:
+                completion(.success(true))
+            }
+        }
     }
     
     // Returns a winner from all participants that signed up for a given raffle

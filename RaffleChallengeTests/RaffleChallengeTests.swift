@@ -95,14 +95,32 @@ class RaffleChallengeTests: XCTestCase {
         }
     }
     
-    func testCreateRaffle() {
-        let raffleName = "Rain"
-        let raffleSecretToken = "gk123"
-        let exp = XCTestExpectation(description: "Raffle posted successfully")
-        RaffleAPIClient.createRaffle(name: raffleName, secretToken: raffleSecretToken) { (result) in
+//    func testCreateRaffle() {
+//        let raffleName = "Rain"
+//        let raffleSecretToken = "gk123"
+//        let exp = XCTestExpectation(description: "Raffle posted successfully")
+//        RaffleAPIClient.createRaffle(name: raffleName, secretToken: raffleSecretToken) { (result) in
+//            switch result {
+//            case .failure(let appError):
+//                XCTFail("Failed to create new raffle: \(appError)")
+//            case .success(let data):
+//                XCTAssertTrue(data)
+//                exp.fulfill()
+//            }
+//        }
+//        wait(for: [exp], timeout: 15.0)
+//    }
+    
+    func testAddParticipantToRaffle() {
+        let firstName = "George"
+        let lastName = "Glass"
+        let email = "george@gmail.com"
+        let phone = "(555)555-5555"
+        let exp = XCTestExpectation(description: "Participant successfully added to raffle")
+        RaffleAPIClient.addParticipantToRaffle(firstName: firstName, lastName: lastName, email: email, phone: phone, raffleID: 150) { (result) in
             switch result {
             case .failure(let appError):
-                XCTFail("Failed to create new raffle: \(appError)")
+                XCTFail("Failed to add participant to raffle: \(appError)")
             case .success(let data):
                 XCTAssertTrue(data)
                 exp.fulfill()
