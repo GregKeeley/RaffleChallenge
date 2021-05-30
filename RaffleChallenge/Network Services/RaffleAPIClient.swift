@@ -58,10 +58,24 @@ class RaffleAPIClient {
     
     // Create a raffle
     /// Uses a POST request
-    static func createRaffle() {
-        
-        // var endpoint = "https://raffle-fs-app.herokuapp.com/api/raffles"
-        
+    static func createRaffle(name: String, secretToken: String, completion: @escaping (Result<Bool, AppError>) -> ()) {
+        let parameters = "{\n\t\"name\": \"\(name)\",\n\t\"secret_token\": \"\(secretToken)\"\n}"
+        let postData = parameters.data(using: .utf8)
+
+        var request = URLRequest(url: URL(string: "https://raffle-fs-app.herokuapp.com/api/raffles")!,timeoutInterval: Double.infinity)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        request.httpMethod = "POST"
+        request.httpBody = postData
+
+        NetworkHelper.shared.performDataTask(with: request) { (result) in
+            switch result {
+            case .failure(let appError):
+                completion(.failure(.networkClientError(appError)))
+            case.success:
+                completion(.success(true))
+            }
+        }
     }
     
     // Fetches a list of all participants for a raffle, using the raffle ID

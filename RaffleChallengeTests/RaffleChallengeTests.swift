@@ -66,6 +66,7 @@ class RaffleChallengeTests: XCTestCase {
             }
         }
     }
+    
     func testFetchRaffle() {
         var raffle: Raffle?
         RaffleAPIClient.fetchRaffle(raffleID: 37) { (result) in
@@ -78,6 +79,7 @@ class RaffleChallengeTests: XCTestCase {
             }
         }
     }
+    
     func testFetchParticipants() {
         var participants = [Participant]()
         
@@ -91,5 +93,21 @@ class RaffleChallengeTests: XCTestCase {
                 XCTAssertGreaterThan(1, participants.count)
             } 
         }
+    }
+    
+    func testCreateRaffle() {
+        let raffleName = "Rain"
+        let raffleSecretToken = "gk123"
+        let exp = XCTestExpectation(description: "Raffle posted successfully")
+        RaffleAPIClient.createRaffle(name: raffleName, secretToken: raffleSecretToken) { (result) in
+            switch result {
+            case .failure(let appError):
+                XCTFail("Failed to create new raffle: \(appError)")
+            case .success(let data):
+                XCTAssertTrue(data)
+                exp.fulfill()
+            }
+        }
+        wait(for: [exp], timeout: 15.0)
     }
 }
