@@ -66,4 +66,30 @@ class RaffleChallengeTests: XCTestCase {
             }
         }
     }
+    func testFetchRaffle() {
+        var raffle: Raffle?
+        RaffleAPIClient.fetchRaffle(raffleID: 37) { (result) in
+            switch result {
+            case .failure(let appError):
+                XCTFail("Failed to fetch raffle: \(appError)")
+            case .success(let data):
+                raffle = data
+                XCTAssertNotNil(raffle)
+            }
+        }
+    }
+    func testFetchParticipants() {
+        var participants = [Participant]()
+        
+        // Using raffle id "37" here knowing it has participants. This test may fail in the future if this raffle no longer exists
+        RaffleAPIClient.fetchParticipantsForRaffle(raffleID: 37) { (results) in
+            switch results {
+            case .failure(let appError):
+                XCTFail("Failed to fetch participants: \(appError)")
+            case .success(let data):
+                participants = data
+                XCTAssertGreaterThan(1, participants.count)
+            } 
+        }
+    }
 }

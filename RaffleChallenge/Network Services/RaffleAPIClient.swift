@@ -34,10 +34,26 @@ class RaffleAPIClient {
     
     
     // Retrieves a single raffle by "ID"
-    static func fetchRaffle(raffleID: Int) {
-        
-        //  var endpoint = "https://raffle-fs-app.herokuapp.com/api/raffles/\(id)"
-        
+    static func fetchRaffle(raffleID: Int, completion: @escaping (Result<Raffle, AppError>) -> ()) {
+        let endpoint = "https://raffle-fs-app.herokuapp.com/api/raffles/\(raffleID)"
+        guard let url = URL(string: endpoint) else {
+            completion(.failure(.badURL(endpoint)))
+            return
+        }
+        let request = URLRequest(url: url)
+        NetworkHelper.shared.performDataTask(with: request) { (result) in
+            switch result {
+            case .failure(let appError):
+                completion(.failure(.networkClientError(appError)))
+            case .success(let data):
+                do {
+                    let raffle = try JSONDecoder().decode(Raffle.self, from: data)
+                    completion(.success(raffle))
+                } catch {
+                    completion(.failure(.decodingError(error)))
+                }
+            }
+        }
     }
     
     // Create a raffle
@@ -49,8 +65,27 @@ class RaffleAPIClient {
     }
     
     // Fetches a list of all participants for a raffle, using the raffle ID
-    static func fetchParticipantsForRaffle(raffleID: Int) {
-        //        var endpoint = "https://raffle-fs-app.herokuapp.com/api/raffles/\(id)/participants"
+    static func fetchParticipantsForRaffle(raffleID: Int, completion: @escaping (Result<[Participant], AppError>) -> ()) {
+        let endpoint = "https://raffle-fs-app.herokuapp.com/api/raffles/\(raffleID)/participants"
+        guard let url = URL(string: endpoint) else {
+            completion(.failure(.badURL(endpoint)))
+            return
+        }
+        let request = URLRequest(url: url)
+        NetworkHelper.shared.performDataTask(with: request) { (result) in
+            switch result {
+            case .failure(let appError):
+                completion(.failure(.networkClientError(appError)))
+            case .success(let data):
+                do {
+                    let participants = try JSONDecoder().decode([Participant].self, from: data)
+                    completion(.success(participants))
+                } catch {
+                    completion(.failure(.decodingError(error)))
+                }
+            }
+        }
+        
     }
     
     

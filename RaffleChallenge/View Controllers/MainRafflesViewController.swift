@@ -78,7 +78,12 @@ extension MainRafflesViewController: UICollectionViewDataSource {
 
 //MARK:- Collection View Delegate
 extension MainRafflesViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let raffle = raffles[indexPath.row]
+        let raffleDetailViewController = RaffleDetailViewController(raffleID: raffle.id)
+        navigationController?.pushViewController(raffleDetailViewController, animated: true)
+        
+    }
 }
 extension MainRafflesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

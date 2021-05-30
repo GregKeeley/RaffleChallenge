@@ -35,6 +35,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <segue destination="OAy-Lg-L6G" kind="show" id="U0t-ju-pki"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -56,6 +59,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="868.11594202898561" y="-37.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="GTh-Jj-Fnu">
+            <objects>
+                <viewController id="OAy-Lg-L6G" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wmv-Vs-29R">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Tjg-gd-4c5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nAP-ED-WsD"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="avp-TE-Ory" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1801" y="-38"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZDV-Zw-gzA">
