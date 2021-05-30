@@ -9,18 +9,18 @@ import UIKit
 
 class RaffleDetailViewController: UIViewController {
     
+    @IBOutlet weak var raffleNameLabel: UILabel!
     //MARK:- Variables/Constants
     var raffleID: Int?
-    var raffle: Raffle?
-    var participants: [Participant]?
-    
-    //MARK:- Initializer
-    init(raffleID: Int) {
-        self.raffleID = raffleID
-        super.init(nibName: nil, bundle: nil)
+    var raffle: Raffle? {
+        didSet {
+            raffleNameLabel.text = raffle?.name
+        }
     }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    var participants: [Participant]? {
+        didSet {
+            print("# of participants: \(participants?.count ?? -1)")
+        }
     }
     
     //MARK:- View Lifecycles

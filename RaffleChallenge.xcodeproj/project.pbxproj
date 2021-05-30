@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		372099862663FF51007C102B /* CreateRaffleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372099852663FF51007C102B /* CreateRaffleViewController.swift */; };
 		373579DA2662BF5A002D264C /* RaffleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 373579D92662BF5A002D264C /* RaffleCollectionViewCell.xib */; };
 		373579DC2662C075002D264C /* RaffleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373579DB2662C075002D264C /* RaffleCollectionViewCell.swift */; };
 		3777F92E2663CBF900441D57 /* RaffleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3777F92D2663CBF900441D57 /* RaffleDetailViewController.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		372099852663FF51007C102B /* CreateRaffleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRaffleViewController.swift; sourceTree = "<group>"; };
 		373579D92662BF5A002D264C /* RaffleCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RaffleCollectionViewCell.xib; sourceTree = "<group>"; };
 		373579DB2662C075002D264C /* RaffleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleCollectionViewCell.swift; sourceTree = "<group>"; };
 		3777F92D2663CBF900441D57 /* RaffleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleDetailViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				37EFA9672661653F00410631 /* MainRafflesViewController.swift */,
 				373579DB2662C075002D264C /* RaffleCollectionViewCell.swift */,
 				3777F92D2663CBF900441D57 /* RaffleDetailViewController.swift */,
+				372099852663FF51007C102B /* CreateRaffleViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				37EFA9682661653F00410631 /* MainRafflesViewController.swift in Sources */,
 				373579DC2662C075002D264C /* RaffleCollectionViewCell.swift in Sources */,
 				37EFA99E26618C8900410631 /* RaffleModel.swift in Sources */,
+				372099862663FF51007C102B /* CreateRaffleViewController.swift in Sources */,
 				37EFA99C26618AE200410631 /* RaffleAPIClient.swift in Sources */,
 				3777F92E2663CBF900441D57 /* RaffleDetailViewController.swift in Sources */,
 				37EFA9642661653F00410631 /* AppDelegate.swift in Sources */,

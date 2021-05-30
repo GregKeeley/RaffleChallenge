@@ -35,9 +35,6 @@ class MainRafflesViewController: UIViewController {
     func configureViewController() {
         navigationItem.title = "All Raffles"
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        let rightBarButtonItem = UIBarButtonItem(title: "Create", style: .plain, target: self, action: #selector(createRaffleButtonPressed(_:)))
-        navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
     func fetchAllRaffles() {
@@ -54,8 +51,9 @@ class MainRafflesViewController: UIViewController {
             }
         }
     }
-    @objc func createRaffleButtonPressed(_ sender: UIBarButtonItem) {
-        print("Add raffle pressed")
+    @IBAction func createRaffleButtonPressed(_ sender: UIBarButtonItem) {
+        let createRaffleViewController = CreateRaffleViewController()
+        show(createRaffleViewController, sender: self)
     }
 }
 
@@ -80,7 +78,8 @@ extension MainRafflesViewController: UICollectionViewDataSource {
 extension MainRafflesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let raffle = raffles[indexPath.row]
-        let raffleDetailViewController = RaffleDetailViewController(raffleID: raffle.id)
+        let raffleDetailViewController = self.storyboard?.instantiateViewController(identifier: "raffleDetailViewController") as! RaffleDetailViewController
+        raffleDetailViewController.raffleID = raffle.id
         navigationController?.pushViewController(raffleDetailViewController, animated: true)
         
     }
