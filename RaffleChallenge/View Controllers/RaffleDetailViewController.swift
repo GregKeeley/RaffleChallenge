@@ -57,6 +57,7 @@ class RaffleDetailViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "RaffleCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "raffleCell")
+        collectionView.backgroundColor = .systemGray5
     }
     func fetchRaffleData() {
         guard let id = raffleID else {
@@ -92,24 +93,38 @@ class RaffleDetailViewController: UIViewController {
         }
     }
     func updateUI() {
+        noOfWinnersLabel.text = ("\(participants?.count ?? 0)")
         raffleIDLabel.text = ("#\(raffleID ?? -1)")
         raffleNameLabel.text = raffle?.name
+        enterRaffleButton.backgroundColor = #colorLiteral(red: 0.5960784314, green: 0.6980392157, blue: 0.368627451, alpha: 1)
+        enterRaffleButton.layer.cornerRadius = 4
+        
         let createdDate = Date.convertStringISO8601ToFormattedString(strDate: raffle?.createdAt ?? "No Date Available")
         createdDateLabel.text = createdDate
+        
+        selectWinnerButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        
         if let winnerID = raffle?.winnerID {
+            // Winner has already been selected
             winnerNameLabel.text = ("\(winnerID)")
             selectWinnerButton.isEnabled = false
-            selectWinnerLockButton.imageView?.image = UIImage(systemName: "lock.open")
+            selectWinnerLockButton.setImage(UIImage(systemName: "lock.open"), for: .normal)
             selectWinnerLockButton.isEnabled = false
             enterRaffleButton.isEnabled = false
+            enterRaffleButton.backgroundColor = .systemGray5
+            selectWinnerButton.setTitle("Winner Selected", for: .disabled)
+            selectWinnerButton.setTitleColor(.gray, for: .disabled)
+            
         } else {
-            winnerNameLabel.text = "No Winner, enter now!"
+            // No Winner has been selected
+            winnerNameLabel.text = "?"
             selectWinnerButton.isEnabled = true
-            selectWinnerLockButton.imageView?.image = UIImage(systemName: "lock")
             selectWinnerLockButton.isEnabled = true
+            selectWinnerLockButton.setImage(UIImage(systemName: "lock"), for: .disabled)
             enterRaffleButton.isEnabled = true
+            selectWinnerButton.setTitle("Select Winner", for: .normal)
         }
-        noOfWinnersLabel.text = ("\(participants?.count ?? 0)")
+        
     }
     //MARK:- @IBActions
     @IBAction func selectWinnerButtonPressed(_ sender: UIButton) {
@@ -152,7 +167,9 @@ extension RaffleDetailViewController: UICollectionViewDelegate {
         raffleDetailViewController.raffleID = raffle.id
         raffleDetailViewController.raffleViewModels = raffleViewModels
         // TODO: Currently, the view controllers will keep stacking - Change this to pop the view controller before pushing the new VC?
-        navigationController?.pushViewController(raffleDetailViewController, animated: true)
+        let navigator = navigationController
+        navigator?.navigationBar.prefersLargeTitles = false
+        navigator?.pushViewController(raffleDetailViewController, animated: true)
     }
 }
 extension RaffleDetailViewController: UICollectionViewDelegateFlowLayout {
