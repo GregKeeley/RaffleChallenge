@@ -19,6 +19,7 @@ class RaffleDetailViewController: UIViewController {
     @IBOutlet weak var winnerNameLabel: UILabel!
     @IBOutlet weak var raffleIDLabel: UILabel!
     @IBOutlet weak var selectWinnerButton: UIButton!
+    @IBOutlet weak var selectWinnerLockButton: UIButton!
     @IBOutlet weak var enterRaffleButton: UIButton!
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -97,8 +98,16 @@ class RaffleDetailViewController: UIViewController {
         createdDateLabel.text = createdDate
         if let winnerID = raffle?.winnerID {
             winnerNameLabel.text = ("\(winnerID)")
+            selectWinnerButton.isEnabled = false
+            selectWinnerLockButton.imageView?.image = UIImage(systemName: "lock.open")
+            selectWinnerLockButton.isEnabled = false
+            enterRaffleButton.isEnabled = false
         } else {
             winnerNameLabel.text = "No Winner, enter now!"
+            selectWinnerButton.isEnabled = true
+            selectWinnerLockButton.imageView?.image = UIImage(systemName: "lock")
+            selectWinnerLockButton.isEnabled = true
+            enterRaffleButton.isEnabled = true
         }
         noOfWinnersLabel.text = ("\(participants?.count ?? 0)")
     }

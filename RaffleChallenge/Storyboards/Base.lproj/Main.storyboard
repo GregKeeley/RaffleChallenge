@@ -267,6 +267,7 @@
                         <outlet property="raffleIDLabel" destination="SWq-48-g7R" id="GYG-1Q-KVG"/>
                         <outlet property="raffleNameLabel" destination="IRv-2U-eFG" id="jTy-Co-qyH"/>
                         <outlet property="selectWinnerButton" destination="eYG-zw-hrD" id="s5C-nm-izc"/>
+                        <outlet property="selectWinnerLockButton" destination="edp-tS-b73" id="rgb-wX-NP0"/>
                         <outlet property="winnerNameLabel" destination="wx5-ix-nkC" id="ppW-mu-VVG"/>
                     </connections>
                 </viewController>
