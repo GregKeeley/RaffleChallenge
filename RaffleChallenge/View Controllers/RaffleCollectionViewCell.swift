@@ -14,11 +14,11 @@ class RaffleCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var createdDateLabel: UILabel!
     @IBOutlet weak var winnerNameLabel: UILabel!
     
-    public func configureCell(for raffle: Raffle) {
+    public func configureCell(for raffle: RaffleViewModel) {
         // TODO: Convert created date to a readable format for label
         raffleNameLabel.text = "\(raffle.name)"
         // TODO: Fetch all participants for a number here
-        // numOfParticipantsLabel.text = ""
+        numOfParticipantsLabel.text = "\(raffle.numOfParticipants ?? 0) entries"
         let createdDate = Date.convertStringISO8601ToFormattedString(strDate: raffle.createdAt)
         createdDateLabel.text = "\(createdDate)"
         if let winnerID = raffle.winnerID {

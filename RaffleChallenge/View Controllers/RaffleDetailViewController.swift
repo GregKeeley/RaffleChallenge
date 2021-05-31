@@ -25,7 +25,7 @@ class RaffleDetailViewController: UIViewController {
     
     //MARK:- Variables/Constants
     var raffleID: Int?
-    var raffle: Raffle? {
+    var raffle: RaffleViewModel? {
         didSet {
             updateUI()
         }
@@ -35,7 +35,7 @@ class RaffleDetailViewController: UIViewController {
             updateUI()
         }
     }
-    var rafflesForCollectionView = [Raffle]()
+    var raffleViewModels = [RaffleViewModel]()
 
     //MARK:- View Lifecycles
     override func viewWillAppear(_ animated: Bool) {
@@ -68,7 +68,8 @@ class RaffleDetailViewController: UIViewController {
                 print("Could not fetch raffle: \(appError)")
             case .success(let data):
                 DispatchQueue.main.async {
-                    self.raffle = data
+                    let raffleViewModel = RaffleViewModel(raffle: data, participantCount: self.participants?.count ?? -1)
+                    self.raffle = raffleViewModel
                 }
             }
         }
@@ -136,7 +137,14 @@ class RaffleDetailViewController: UIViewController {
 }
 
 extension RaffleDetailViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let raffle = raffleViewModels[indexPath.row]
+        let raffleDetailViewController = self.storyboard?.instantiateViewController(identifier: "raffleDetailViewController") as! RaffleDetailViewController
+        raffleDetailViewController.raffleID = raffle.id
+        raffleDetailViewController.raffleViewModels = raffleViewModels
+        // TODO: Currently, the view controllers will keep stacking - Change this to pop the view controller before pushing the new VC?
+        navigationController?.pushViewController(raffleDetailViewController, animated: true)
+    }
 }
 extension RaffleDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -151,13 +159,13 @@ extension RaffleDetailViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "raffleCell", for: indexPath) as? RaffleCollectionViewCell else {
             fatalError("Failed to dequeue reusable cell")
         }
-        let raffle = rafflesForCollectionView[indexPath.row]
+        let raffle = raffleViewModels[indexPath.row]
         cell.configureCell(for: raffle)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return rafflesForCollectionView.count
+        return raffleViewModels.count
     }
     
 }

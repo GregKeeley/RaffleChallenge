@@ -17,7 +17,7 @@ class MainRafflesViewController: UIViewController {
             navigationItem.title = "All Raffles(\(raffles.count))"
         }
     }
-    
+    var raffleViewModels = [RaffleViewModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
@@ -47,8 +47,20 @@ class MainRafflesViewController: UIViewController {
                 print("Could not fetch all raffles: \(appError)")
             case .success(let raffleData):
                 DispatchQueue.main.async {
-                    let sortedRaffles = raffleData.sorted( by: { $0.createdAt > $1.createdAt })
-                    self.raffles = sortedRaffles
+//                    let sortedRaffles = raffleData.sorted( by: { $0.createdAt > $1.createdAt })
+//                    self.raffles = sortedRaffles
+                    for raffle in raffleData {
+                        var raffleViewModel = RaffleViewModel(raffle: raffle, participantCount: 0)
+                        RaffleAPIClient.fetchParticipantsForRaffle(raffleID: raffle.id) { (result) in
+                            switch result {
+                            case .failure(let appError):
+                                print("Could not load participants: \(appError)")
+                            case .success(let data):
+                                raffleViewModel.numOfParticipants = data.count
+                                self.raffleViewModels.append(raffleViewModel)
+                            }
+                        }
+                    }
                     self.collectionView.reloadData()
                 }
             }
@@ -63,14 +75,14 @@ class MainRafflesViewController: UIViewController {
 //MARK:- Collection View Data Source
 extension MainRafflesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return raffles.count
+        return raffleViewModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "raffleCell", for: indexPath) as? RaffleCollectionViewCell else {
             fatalError("Dequeue reusable cell error")
         }
-        let raffle = raffles[indexPath.row]
+        let raffle = raffleViewModels[indexPath.row]
         cell.configureCell(for: raffle)
         return cell
     }
@@ -80,12 +92,11 @@ extension MainRafflesViewController: UICollectionViewDataSource {
 //MARK:- Collection View Delegate
 extension MainRafflesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let raffle = raffles[indexPath.row]
+        let raffle = raffleViewModels[indexPath.row]
         let raffleDetailViewController = self.storyboard?.instantiateViewController(identifier: "raffleDetailViewController") as! RaffleDetailViewController
         raffleDetailViewController.raffleID = raffle.id
-        raffleDetailViewController.rafflesForCollectionView = raffles
+        raffleDetailViewController.raffleViewModels = raffleViewModels
         navigationController?.pushViewController(raffleDetailViewController, animated: true)
-        
     }
 }
 extension MainRafflesViewController: UICollectionViewDelegateFlowLayout {
@@ -95,5 +106,5 @@ extension MainRafflesViewController: UICollectionViewDelegateFlowLayout {
         let itemWidth: CGFloat = maxSize.width
         return CGSize(width: itemWidth, height: itemHeight)
     }
-
+    
 }
