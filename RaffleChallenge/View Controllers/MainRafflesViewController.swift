@@ -83,6 +83,7 @@ extension MainRafflesViewController: UICollectionViewDelegate {
         let raffle = raffles[indexPath.row]
         let raffleDetailViewController = self.storyboard?.instantiateViewController(identifier: "raffleDetailViewController") as! RaffleDetailViewController
         raffleDetailViewController.raffleID = raffle.id
+        raffleDetailViewController.rafflesForCollectionView = raffles
         navigationController?.pushViewController(raffleDetailViewController, animated: true)
         
     }

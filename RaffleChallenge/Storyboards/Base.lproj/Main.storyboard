@@ -125,22 +125,139 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raffle Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IRv-2U-eFG">
-                                <rect key="frame" x="20" y="81" width="94" height="21"/>
+                                <rect key="frame" x="20" y="52" width="248.5" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="May 30, 2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKp-Gd-pd0">
+                                <rect key="frame" x="20" y="118" width="103" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ahz-Gv-KPE">
+                                <rect key="frame" x="20" y="381" width="152.5" height="134"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="85"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No of participants" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D53-TW-qNr">
+                                <rect key="frame" x="36" y="355" width="121" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Winner" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wx5-ix-nkC">
+                                <rect key="frame" x="241.5" y="381" width="152.5" height="134"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hjd-MG-Avf">
+                                <rect key="frame" x="204.5" y="381" width="5" height="134"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="5" id="Mql-7b-uO7"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TOH-aZ-tel">
+                                <rect key="frame" x="0.0" y="700" width="414" height="196"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="T6f-OO-sE4">
+                                    <size key="itemSize" width="169" height="195"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="raffleCell" id="YWG-2r-Lma" customClass="RaffleCollectionViewCell" customModule="RaffleChallenge" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.5" width="169" height="195"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8J2-hX-v6M">
+                                            <rect key="frame" x="0.0" y="0.0" width="169" height="195"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="169" height="195"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Other Raffles you may like" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBc-Pu-LkN">
+                                <rect key="frame" x="20" y="671" width="199" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8aI-6y-sc4">
+                                <rect key="frame" x="171" y="541" width="73" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Enter now!"/>
+                                <connections>
+                                    <action selector="enterRaffleButtonPressed:" destination="OAy-Lg-L6G" eventType="touchUpInside" id="K7Q-Yn-fUL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYG-zw-hrD">
+                                <rect key="frame" x="282.5" y="158" width="105" height="30"/>
+                                <state key="normal" title="Select a winner"/>
+                                <connections>
+                                    <action selector="selectWinnerButtonPressed:" destination="OAy-Lg-L6G" eventType="touchUpInside" id="BaF-HX-3Rw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="edp-tS-b73">
+                                <rect key="frame" x="276.5" y="52" width="117.5" height="106"/>
+                                <state key="normal" image="lock" catalog="system">
+                                    <attributedString key="attributedTitle"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="97"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectWinnerButtonPressed:" destination="OAy-Lg-L6G" eventType="touchUpInside" id="uwu-OQ-66B"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Tjg-gd-4c5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="IRv-2U-eFG" firstAttribute="leading" secondItem="Tjg-gd-4c5" secondAttribute="leading" constant="20" id="K6Y-bH-dke"/>
-                            <constraint firstItem="IRv-2U-eFG" firstAttribute="top" secondItem="Tjg-gd-4c5" secondAttribute="top" constant="37" id="PaG-qq-APT"/>
+                            <constraint firstItem="Ahz-Gv-KPE" firstAttribute="leading" secondItem="Tjg-gd-4c5" secondAttribute="leading" constant="20" id="0WU-aU-rxu"/>
+                            <constraint firstItem="hjd-MG-Avf" firstAttribute="bottom" secondItem="Ahz-Gv-KPE" secondAttribute="bottom" id="10V-g6-lxL"/>
+                            <constraint firstItem="Tjg-gd-4c5" firstAttribute="trailing" secondItem="wx5-ix-nkC" secondAttribute="trailing" constant="20" id="1Pf-OV-ZSY"/>
+                            <constraint firstItem="eYG-zw-hrD" firstAttribute="centerX" secondItem="edp-tS-b73" secondAttribute="centerX" id="2ex-Ud-zee"/>
+                            <constraint firstItem="Ahz-Gv-KPE" firstAttribute="top" secondItem="D53-TW-qNr" secondAttribute="bottom" constant="8" id="5zu-oi-c5S"/>
+                            <constraint firstItem="hKp-Gd-pd0" firstAttribute="leading" secondItem="Tjg-gd-4c5" secondAttribute="leading" constant="20" id="60S-4h-mmf"/>
+                            <constraint firstItem="wx5-ix-nkC" firstAttribute="leading" secondItem="hjd-MG-Avf" secondAttribute="trailing" constant="32" id="6Qq-wa-65N"/>
+                            <constraint firstItem="IRv-2U-eFG" firstAttribute="width" secondItem="Wmv-Vs-29R" secondAttribute="width" multiplier="0.6" id="734-Ru-2ya"/>
+                            <constraint firstItem="edp-tS-b73" firstAttribute="leading" secondItem="IRv-2U-eFG" secondAttribute="trailing" constant="8" symbolic="YES" id="B1B-mM-fHo"/>
+                            <constraint firstItem="eYG-zw-hrD" firstAttribute="top" secondItem="edp-tS-b73" secondAttribute="bottom" id="Ces-IH-cSI"/>
+                            <constraint firstItem="TOH-aZ-tel" firstAttribute="leading" secondItem="Tjg-gd-4c5" secondAttribute="leading" id="DEo-9O-fT1"/>
+                            <constraint firstItem="TOH-aZ-tel" firstAttribute="height" secondItem="Wmv-Vs-29R" secondAttribute="height" multiplier="0.21875" id="Eft-6c-jWc"/>
+                            <constraint firstItem="IRv-2U-eFG" firstAttribute="top" secondItem="Tjg-gd-4c5" secondAttribute="top" constant="8" id="EwZ-zp-ujN"/>
+                            <constraint firstItem="D53-TW-qNr" firstAttribute="centerX" secondItem="Ahz-Gv-KPE" secondAttribute="centerX" id="FYQ-aB-VVM"/>
+                            <constraint firstItem="wx5-ix-nkC" firstAttribute="bottom" secondItem="hjd-MG-Avf" secondAttribute="bottom" id="JHW-W1-tFy"/>
+                            <constraint firstItem="TOH-aZ-tel" firstAttribute="top" secondItem="JBc-Pu-LkN" secondAttribute="bottom" constant="8" symbolic="YES" id="N5N-4L-9Eu"/>
+                            <constraint firstItem="JBc-Pu-LkN" firstAttribute="leading" secondItem="Tjg-gd-4c5" secondAttribute="leading" constant="20" id="NpF-t9-HHt"/>
+                            <constraint firstItem="wx5-ix-nkC" firstAttribute="top" secondItem="hjd-MG-Avf" secondAttribute="top" id="OjL-8P-3yF"/>
+                            <constraint firstItem="TOH-aZ-tel" firstAttribute="trailing" secondItem="Tjg-gd-4c5" secondAttribute="trailing" id="PeB-2w-xTg"/>
+                            <constraint firstItem="Tjg-gd-4c5" firstAttribute="trailing" secondItem="edp-tS-b73" secondAttribute="trailing" constant="20" id="V0x-aH-Rb3"/>
+                            <constraint firstItem="edp-tS-b73" firstAttribute="top" secondItem="IRv-2U-eFG" secondAttribute="top" id="ZYZ-VM-JIx"/>
+                            <constraint firstItem="hKp-Gd-pd0" firstAttribute="top" secondItem="IRv-2U-eFG" secondAttribute="bottom" constant="12" id="cFP-zi-Uh0"/>
+                            <constraint firstItem="hjd-MG-Avf" firstAttribute="centerX" secondItem="Wmv-Vs-29R" secondAttribute="centerX" id="dF2-Xw-9V8"/>
+                            <constraint firstItem="hjd-MG-Avf" firstAttribute="leading" secondItem="Ahz-Gv-KPE" secondAttribute="trailing" constant="32" id="gbc-Or-rWA"/>
+                            <constraint firstAttribute="bottom" secondItem="TOH-aZ-tel" secondAttribute="bottom" id="ib6-ay-6iz"/>
+                            <constraint firstItem="IRv-2U-eFG" firstAttribute="leading" secondItem="Tjg-gd-4c5" secondAttribute="leading" constant="20" id="m8s-XE-DET"/>
+                            <constraint firstItem="Ahz-Gv-KPE" firstAttribute="height" secondItem="Wmv-Vs-29R" secondAttribute="height" multiplier="0.15" id="rDo-nd-lEG"/>
+                            <constraint firstItem="wx5-ix-nkC" firstAttribute="centerY" secondItem="hjd-MG-Avf" secondAttribute="centerY" id="uIP-h6-t03"/>
+                            <constraint firstItem="hjd-MG-Avf" firstAttribute="centerY" secondItem="Wmv-Vs-29R" secondAttribute="centerY" id="xpb-tG-8YS"/>
+                            <constraint firstItem="hjd-MG-Avf" firstAttribute="top" secondItem="Ahz-Gv-KPE" secondAttribute="top" id="y4i-lr-V01"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nAP-ED-WsD"/>
                     <connections>
+                        <outlet property="collectionView" destination="TOH-aZ-tel" id="tyi-pX-nyt"/>
+                        <outlet property="createdDateLabel" destination="hKp-Gd-pd0" id="y9Q-nL-kd3"/>
+                        <outlet property="enterRaffleButton" destination="8aI-6y-sc4" id="Djd-Lr-O28"/>
+                        <outlet property="noOfWinnersLabel" destination="Ahz-Gv-KPE" id="DZR-ya-13z"/>
                         <outlet property="raffleNameLabel" destination="IRv-2U-eFG" id="jTy-Co-qyH"/>
+                        <outlet property="selectWinnerButton" destination="eYG-zw-hrD" id="s5C-nm-izc"/>
+                        <outlet property="winnerNameLabel" destination="wx5-ix-nkC" id="ppW-mu-VVG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="avp-TE-Ory" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -167,6 +284,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="lock" catalog="system" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

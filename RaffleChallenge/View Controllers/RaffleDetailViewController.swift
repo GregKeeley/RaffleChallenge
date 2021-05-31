@@ -8,29 +8,57 @@
 import UIKit
 
 class RaffleDetailViewController: UIViewController {
-    
+    //MARK:- IBOutlets
     @IBOutlet weak var raffleNameLabel: UILabel!
+    @IBOutlet weak var noOfWinnersLabel: UILabel!
+    @IBOutlet weak var createdDateLabel: UILabel!
+    @IBOutlet weak var winnerNameLabel: UILabel!
+    @IBOutlet weak var selectWinnerButton: UIButton!
+    @IBOutlet weak var enterRaffleButton: UIButton!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     //MARK:- Variables/Constants
     var raffleID: Int?
     var raffle: Raffle? {
         didSet {
             raffleNameLabel.text = raffle?.name
+            let createdDate = Date.convertStringISO8601ToFormattedString(strDate: raffle?.createdAt ?? "No Date Available")
+            createdDateLabel.text = createdDate
+            if let winnerID = raffle?.winnerID {
+                winnerNameLabel.text = ("\(winnerID)")
+            } else {
+                winnerNameLabel.text = "No Winner, enter now!"
+            }
         }
     }
     var participants: [Participant]? {
         didSet {
-            print("# of participants: \(participants?.count ?? -1)")
+            noOfWinnersLabel.text = ("\(participants?.count ?? -1)")
         }
     }
+    var rafflesForCollectionView = [Raffle]()
     
     //MARK:- View Lifecycles
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
         fetchRaffleData()
         fetchRaffleParticipants()
     }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureView()
+    }
     
     //MARK:- Functions
+    func configureView() {
+        raffleNameLabel.adjustsFontSizeToFitWidth = true
+        noOfWinnersLabel.adjustsFontSizeToFitWidth = true
+        winnerNameLabel.adjustsFontSizeToFitWidth = true
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(UINib(nibName: "RaffleCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "raffleCell")
+    }
     func fetchRaffleData() {
         guard let id = raffleID else {
             print("No raffle id")
@@ -63,4 +91,41 @@ class RaffleDetailViewController: UIViewController {
             }
         }
     }
+    
+    //MARK:- @IBActions
+    @IBAction func selectWinnerButtonPressed(_ sender: UIButton) {
+        print("select winner button pressed")
+    }
+    @IBAction func enterRaffleButtonPressed(_ sender: UIButton) {
+        print("enter raffle button pressed")
+    }
+    
+    
+}
+
+extension RaffleDetailViewController: UICollectionViewDelegate {
+    
+}
+extension RaffleDetailViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let maxSize = UIScreen.main.bounds
+        let maxHeight = maxSize.height * 0.90
+        let maxWidth = maxSize.width / 5
+        return CGSize(width: maxWidth, height: maxHeight)
+    }
+}
+extension RaffleDetailViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "raffleCell", for: indexPath) as? RaffleCollectionViewCell else {
+            fatalError("Failed to dequeue reusable cell")
+        }
+        let raffle = rafflesForCollectionView[indexPath.row]
+        cell.configureCell(for: raffle)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return rafflesForCollectionView.count
+    }
+    
 }
