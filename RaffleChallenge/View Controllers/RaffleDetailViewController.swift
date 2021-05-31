@@ -160,7 +160,7 @@ extension RaffleDetailViewController: UICollectionViewDataSource {
             fatalError("Failed to dequeue reusable cell")
         }
         let raffle = raffleViewModels[indexPath.row]
-        cell.configureCell(for: raffle)
+        cell.configureCell(for: raffle, row: indexPath.row)
         return cell
     }
     
