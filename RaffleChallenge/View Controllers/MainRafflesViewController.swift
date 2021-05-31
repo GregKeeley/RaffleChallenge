@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CreatedNewRaffleDelegate: AnyObject {
+    func newRaffleCreated()
+}
+
 class MainRafflesViewController: UIViewController {
     //MARK:-  IBOulets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -22,11 +26,7 @@ class MainRafflesViewController: UIViewController {
             }
         }
     }
-    var stillLoading: Bool = false {
-        didSet {
-            print(stillLoading)
-        }
-    }
+    var stillLoading: Bool = false
      
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +59,8 @@ class MainRafflesViewController: UIViewController {
             case .success(let raffleData):
                 // Parsing through each Raffle
                 DispatchQueue.main.async {
-                    for raffle in raffleData {
+                    let sortedRaffles = raffleData.sorted { $0.createdAt > $1.createdAt }
+                    for raffle in sortedRaffles {
                         var raffleViewModel = RaffleViewModel(raffle: raffle, participantCount: 0)
                         // Fetching participants for each Raffle
                         RaffleAPIClient.fetchParticipantsForRaffle(raffleID: raffle.id) { (result) in
@@ -83,6 +84,7 @@ class MainRafflesViewController: UIViewController {
     }
     @IBAction func createRaffleButtonPressed(_ sender: UIBarButtonItem) {
         let createRaffleViewController = CreateRaffleViewController()
+        createRaffleViewController.createdNewRaffleDelegate = self
         show(createRaffleViewController, sender: self)
     }
 }
@@ -132,4 +134,11 @@ extension MainRafflesViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: itemWidth, height: itemHeight)
     }
     
+}
+
+extension MainRafflesViewController: CreatedNewRaffleDelegate {
+    func newRaffleCreated() {
+        fetchAllRaffles()
+        collectionView.reloadData()
+    }
 }

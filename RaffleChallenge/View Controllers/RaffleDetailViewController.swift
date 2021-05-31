@@ -21,6 +21,7 @@ class RaffleDetailViewController: UIViewController {
     @IBOutlet weak var selectWinnerButton: UIButton!
     @IBOutlet weak var selectWinnerLockButton: UIButton!
     @IBOutlet weak var enterRaffleButton: UIButton!
+    @IBOutlet weak var keyImage: UIImageView!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -96,7 +97,7 @@ class RaffleDetailViewController: UIViewController {
         noOfWinnersLabel.text = ("\(participants?.count ?? 0)")
         raffleIDLabel.text = ("#\(raffleID ?? -1)")
         raffleNameLabel.text = raffle?.name
-        enterRaffleButton.backgroundColor = #colorLiteral(red: 0.5960784314, green: 0.6980392157, blue: 0.368627451, alpha: 1)
+        enterRaffleButton.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         enterRaffleButton.layer.cornerRadius = 4
         
         let createdDate = Date.convertStringISO8601ToFormattedString(strDate: raffle?.createdAt ?? "No Date Available")
@@ -114,7 +115,7 @@ class RaffleDetailViewController: UIViewController {
             enterRaffleButton.backgroundColor = .systemGray5
             selectWinnerButton.setTitle("Winner Selected", for: .disabled)
             selectWinnerButton.setTitleColor(.gray, for: .disabled)
-            
+            keyImage.tintColor = .gray
         } else {
             // No Winner has been selected
             winnerNameLabel.text = "?"
@@ -124,7 +125,6 @@ class RaffleDetailViewController: UIViewController {
             enterRaffleButton.isEnabled = true
             selectWinnerButton.setTitle("Select Winner", for: .normal)
         }
-        
     }
     //MARK:- @IBActions
     @IBAction func selectWinnerButtonPressed(_ sender: UIButton) {

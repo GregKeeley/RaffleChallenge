@@ -17,7 +17,6 @@ class EnterRaffleViewController: UIViewController {
     
     //MARK:- Variables/Constants
     var raffleID: Int?
-    var instantanceOfRaffleDetailViewController: RaffleDetailViewController!
     weak var addedParticipantDelegate: AddParticipantToRaffleDelegate?
     
     override func viewDidLoad() {
