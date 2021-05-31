@@ -103,7 +103,7 @@ class RaffleAPIClient {
     
     // Signs up participant to a raffle
     /// Uses a POST request
-    static func addParticipantToRaffle(firstName: String, lastName: String, email: String, phone: String?, raffleID: Int, completion:  @escaping (Result<Bool, AppError>) -> ()) {
+    static func addParticipantToRaffle(firstName: String, lastName: String, email: String, phone: String?, raffleID: Int, completion:  @escaping (Result<AddParticipantResponseModel, AppError>) -> ()) {
         let endpoint = "https://raffle-fs-app.herokuapp.com/api/raffles/\(raffleID)/participants"
         let parameters = "{ \n\"firstname\": \"\(firstName)\", \n\"lastname\": \"\(lastName)\", \n\"email\": \"\(email)\", \n\"phone\": \"\(phone ?? "N/A")\"\n}"
         let postData = parameters.data(using: .utf8)
@@ -121,8 +121,13 @@ class RaffleAPIClient {
             switch result {
             case .failure(let appError):
                 completion(.failure(.networkClientError(appError)))
-            case.success:
-                completion(.success(true))
+            case.success(let data):
+                do {
+                    let response = try JSONDecoder().decode(AddParticipantResponseModel.self, from: data)
+                    completion(.success(response))
+                } catch {
+                    completion(.failure(.decodingError(error)))
+                }
             }
         }
     }

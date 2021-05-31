@@ -17,6 +17,7 @@ class RaffleDetailViewController: UIViewController {
     @IBOutlet weak var noOfWinnersLabel: UILabel!
     @IBOutlet weak var createdDateLabel: UILabel!
     @IBOutlet weak var winnerNameLabel: UILabel!
+    @IBOutlet weak var raffleIDLabel: UILabel!
     @IBOutlet weak var selectWinnerButton: UIButton!
     @IBOutlet weak var enterRaffleButton: UIButton!
     
@@ -89,6 +90,7 @@ class RaffleDetailViewController: UIViewController {
         }
     }
     func updateUI() {
+        raffleIDLabel.text = ("#\(raffleID ?? -1)")
         raffleNameLabel.text = raffle?.name
         let createdDate = Date.convertStringISO8601ToFormattedString(strDate: raffle?.createdAt ?? "No Date Available")
         createdDateLabel.text = createdDate

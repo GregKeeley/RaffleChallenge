@@ -25,20 +25,24 @@ class EnterRaffleViewController: UIViewController {
         
     }
     @IBAction func enterRaffleButtonPressed(_ sender: UIButton) {
-        guard let firstName = firstNameTextField.text, let lastName = lastNameTextField.text, let emailAddress = emailAddressTextField.text else {
-            print("All fields required")
+        guard let firstName = firstNameTextField.text, !firstName.isEmpty, let lastName = lastNameTextField.text, !lastName.isEmpty, let emailAddress = emailAddressTextField.text, !emailAddress.isEmpty else {
+            showAlert(title: "First name, Last name and Email are required", message: "Please check all fields have been filled")
             return
         }
         let phoneNumber = phoneNumberTextField.text
         RaffleAPIClient.addParticipantToRaffle(firstName: firstName, lastName: lastName, email: emailAddress, phone: phoneNumber, raffleID: raffleID ?? -1) { (result) in
             switch result {
             case .failure(let appError):
-                print("Error adding participant: \(appError)")
-            case .success(_):
-                print("Participant added!")
+                DispatchQueue.main.async {
+                    self.showAlert(title: "Something went wrong", message: "\(appError)")
+                }
+            case .success(let response):
                 DispatchQueue.main.async {
                     self.addedParticipantDelegate?.participantAddedToRaffle()
-                    self.dismiss(animated: true)
+                    self.showAlert(title: "\(response.title ?? "Error")", message: "\(response.content ?? "Error")") { _ in
+                        self.dismiss(animated: true)
+                    }
+                    
                 }
             }
         }
