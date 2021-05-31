@@ -19,6 +19,12 @@ class RaffleCollectionViewCell: UICollectionViewCell {
         raffleNameLabel.text = "\(raffle.name)"
         // TODO: Fetch all participants for a number here
         // numOfParticipantsLabel.text = ""
-        createdDateLabel.text = "\(raffle.createdAt)"
+        let createdDate = Date.convertStringISO8601ToFormattedString(strDate: raffle.createdAt)
+        createdDateLabel.text = "\(createdDate)"
+        if let winnerID = raffle.winnerID {
+            winnerNameLabel.text = ("Winner ID: \(winnerID)")
+        } else {
+            winnerNameLabel.text = "No winner selected"
+        }
     }
 }

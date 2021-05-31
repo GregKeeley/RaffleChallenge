@@ -94,7 +94,25 @@ class RaffleDetailViewController: UIViewController {
     
     //MARK:- @IBActions
     @IBAction func selectWinnerButtonPressed(_ sender: UIButton) {
-        print("select winner button pressed")
+        let alert = UIAlertController(title: "Ready to select a winner?", message: "Enter Password", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Secret Key"
+        }
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
+            RaffleAPIClient.selectRaffleWinner(secret: textField?.text ?? "", raffleID: self.raffle?.id ?? -1) { (result) in
+                switch result {
+                case .failure(let appError):
+                    print("Something went wrong selecting a winner: \(appError)")
+                case .success(_):
+                    print("A winner has been selected!")
+                    self.fetchRaffleData()
+                }
+            }
+        }))
+
+        self.present(alert, animated: true, completion: nil)
+        
     }
     @IBAction func enterRaffleButtonPressed(_ sender: UIButton) {
         print("enter raffle button pressed")
