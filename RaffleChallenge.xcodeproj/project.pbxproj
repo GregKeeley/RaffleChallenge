@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		372099862663FF51007C102B /* CreateRaffleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372099852663FF51007C102B /* CreateRaffleViewController.swift */; };
+		372EDBEF266487A400E5887A /* EnterRaffleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372EDBEE266487A400E5887A /* EnterRaffleViewController.swift */; };
 		37347CF426645BF0000827A1 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37347CF326645BF0000827A1 /* DateExtension.swift */; };
 		373579DA2662BF5A002D264C /* RaffleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 373579D92662BF5A002D264C /* RaffleCollectionViewCell.xib */; };
 		373579DC2662C075002D264C /* RaffleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373579DB2662C075002D264C /* RaffleCollectionViewCell.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		372099852663FF51007C102B /* CreateRaffleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRaffleViewController.swift; sourceTree = "<group>"; };
+		372EDBEE266487A400E5887A /* EnterRaffleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRaffleViewController.swift; sourceTree = "<group>"; };
 		37347CF326645BF0000827A1 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		373579D92662BF5A002D264C /* RaffleCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RaffleCollectionViewCell.xib; sourceTree = "<group>"; };
 		373579DB2662C075002D264C /* RaffleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				373579DB2662C075002D264C /* RaffleCollectionViewCell.swift */,
 				3777F92D2663CBF900441D57 /* RaffleDetailViewController.swift */,
 				372099852663FF51007C102B /* CreateRaffleViewController.swift */,
+				372EDBEE266487A400E5887A /* EnterRaffleViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				37EFA9642661653F00410631 /* AppDelegate.swift in Sources */,
 				37EFA9A226618D0E00410631 /* RaffleViewModel.swift in Sources */,
 				37EFA9662661653F00410631 /* SceneDelegate.swift in Sources */,
+				372EDBEF266487A400E5887A /* EnterRaffleViewController.swift in Sources */,
 				37EFA9A026618C9900410631 /* ParticipantModel.swift in Sources */,
 				37EFA99A26617A7B00410631 /* Network Helper.swift in Sources */,
 			);

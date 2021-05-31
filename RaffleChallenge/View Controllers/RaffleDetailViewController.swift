@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol AddParticipantToRaffleDelegate: AnyObject {
+    func participantAddedToRaffle()
+}
+
 class RaffleDetailViewController: UIViewController {
     //MARK:- IBOutlets
     @IBOutlet weak var raffleNameLabel: UILabel!
@@ -22,23 +26,16 @@ class RaffleDetailViewController: UIViewController {
     var raffleID: Int?
     var raffle: Raffle? {
         didSet {
-            raffleNameLabel.text = raffle?.name
-            let createdDate = Date.convertStringISO8601ToFormattedString(strDate: raffle?.createdAt ?? "No Date Available")
-            createdDateLabel.text = createdDate
-            if let winnerID = raffle?.winnerID {
-                winnerNameLabel.text = ("\(winnerID)")
-            } else {
-                winnerNameLabel.text = "No Winner, enter now!"
-            }
+            updateUI()
         }
     }
     var participants: [Participant]? {
         didSet {
-            noOfWinnersLabel.text = ("\(participants?.count ?? -1)")
+            updateUI()
         }
     }
     var rafflesForCollectionView = [Raffle]()
-    
+
     //MARK:- View Lifecycles
     override func viewWillAppear(_ animated: Bool) {
         fetchRaffleData()
@@ -91,13 +88,24 @@ class RaffleDetailViewController: UIViewController {
             }
         }
     }
-    
+    func updateUI() {
+        raffleNameLabel.text = raffle?.name
+        let createdDate = Date.convertStringISO8601ToFormattedString(strDate: raffle?.createdAt ?? "No Date Available")
+        createdDateLabel.text = createdDate
+        if let winnerID = raffle?.winnerID {
+            winnerNameLabel.text = ("\(winnerID)")
+        } else {
+            winnerNameLabel.text = "No Winner, enter now!"
+        }
+        noOfWinnersLabel.text = ("\(participants?.count ?? 0)")
+    }
     //MARK:- @IBActions
     @IBAction func selectWinnerButtonPressed(_ sender: UIButton) {
         let alert = UIAlertController(title: "Ready to select a winner?", message: "Enter Password", preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.placeholder = "Secret Key"
         }
+        
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
             RaffleAPIClient.selectRaffleWinner(secret: textField?.text ?? "", raffleID: self.raffle?.id ?? -1) { (result) in
@@ -110,12 +118,16 @@ class RaffleDetailViewController: UIViewController {
                 }
             }
         }))
-
+        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (_) in
+        }))
         self.present(alert, animated: true, completion: nil)
-        
     }
+    
     @IBAction func enterRaffleButtonPressed(_ sender: UIButton) {
-        print("enter raffle button pressed")
+        let enterRaffleViewController = self.storyboard?.instantiateViewController(identifier: "enterRaffleViewController") as! EnterRaffleViewController
+        enterRaffleViewController.raffleID = raffle?.id
+        enterRaffleViewController.addedParticipantDelegate = self
+        navigationController?.present(enterRaffleViewController, animated: true)
     }
     
     
@@ -146,4 +158,11 @@ extension RaffleDetailViewController: UICollectionViewDataSource {
         return rafflesForCollectionView.count
     }
     
+}
+
+extension RaffleDetailViewController: AddParticipantToRaffleDelegate {
+    func participantAddedToRaffle() {
+        fetchRaffleData()
+        fetchRaffleParticipants()
+    }
 }
