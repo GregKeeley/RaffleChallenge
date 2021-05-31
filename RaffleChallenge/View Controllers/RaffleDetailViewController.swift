@@ -140,7 +140,7 @@ extension RaffleDetailViewController: UICollectionViewDelegate {
 }
 extension RaffleDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let maxSize = UIScreen.main.bounds
+        let maxSize = collectionView.frame.size
         let maxHeight = maxSize.height * 0.90
         let maxWidth = maxSize.width / 5
         return CGSize(width: maxWidth, height: maxHeight)
