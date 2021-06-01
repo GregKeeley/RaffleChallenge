@@ -69,7 +69,7 @@ class MainRafflesViewController: UIViewController {
                     var raffleViewModel = RaffleViewModel(raffle: raffle, participantCount: 0)
                     // Fetching participants for each Raffle
                     let numOfParticipants = self.fetchParticipantsForRaffle(raffleID: raffle.id)
-                    print(numOfParticipants)
+
                     raffleViewModel.numOfParticipants = numOfParticipants
                     dataRaffleViewModels.append(raffleViewModel)
                 }
