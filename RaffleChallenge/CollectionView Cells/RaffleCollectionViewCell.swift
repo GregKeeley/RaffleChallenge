@@ -19,7 +19,7 @@ class RaffleCollectionViewCell: UICollectionViewCell {
     public func configureCell(for raffle: RaffleViewModel, row: Int) {
         contentView.backgroundColor = newBkgdColor[row % newBkgdColor.count]
         raffleNameLabel.text = "\(raffle.name)"
-        numOfParticipantsLabel.text = "\(raffle.numOfParticipants ?? 0) entries"
+        numOfParticipantsLabel.text = "\(raffle.numOfParticipants) entries"
         let createdDate = Date.convertStringISO8601ToFormattedString(strDate: raffle.createdAt)
         createdDateLabel.text = "\(createdDate)"
         if let winnerID = raffle.winnerID {

@@ -98,7 +98,7 @@ class RaffleDetailViewController: UIViewController {
             }
         }
     }
-
+    
     func updateUI() {
         noOfWinnersLabel.text = ("\(participants?.count ?? 0)")
         raffleIDLabel.text = ("#\(raffleID ?? -1)")

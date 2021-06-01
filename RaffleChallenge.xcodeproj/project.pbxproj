@@ -29,7 +29,6 @@
 		37EFA99E26618C8900410631 /* RaffleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EFA99D26618C8900410631 /* RaffleModel.swift */; };
 		37EFA9A026618C9900410631 /* ParticipantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EFA99F26618C9900410631 /* ParticipantModel.swift */; };
 		37EFA9A226618D0E00410631 /* RaffleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EFA9A126618D0E00410631 /* RaffleViewModel.swift */; };
-		37EFA9A426618D1F00410631 /* ParticipantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EFA9A326618D1F00410631 /* ParticipantViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +77,6 @@
 		37EFA99D26618C8900410631 /* RaffleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleModel.swift; sourceTree = "<group>"; };
 		37EFA99F26618C9900410631 /* ParticipantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantModel.swift; sourceTree = "<group>"; };
 		37EFA9A126618D0E00410631 /* RaffleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleViewModel.swift; sourceTree = "<group>"; };
-		37EFA9A326618D1F00410631 /* ParticipantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,7 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				37EFA9A126618D0E00410631 /* RaffleViewModel.swift */,
-				37EFA9A326618D1F00410631 /* ParticipantViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -368,7 +365,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37EFA9A426618D1F00410631 /* ParticipantViewModel.swift in Sources */,
 				372EDBF5266566E700E5887A /* IndicatorCollectionViewCell.swift in Sources */,
 				37EFA9682661653F00410631 /* MainRafflesViewController.swift in Sources */,
 				372EDBF12664947200E5887A /* UIViewControllerExtension.swift in Sources */,

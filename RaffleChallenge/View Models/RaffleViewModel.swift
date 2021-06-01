@@ -9,7 +9,7 @@ import Foundation
 
 struct RaffleViewModel {
     let id: Int
-    var numOfParticipants: Int?
+    var numOfParticipants: Int
     let name: String, createdAt: String, raffledAt: String?, winnerID: Int?
     
     init(raffle: Raffle, participantCount: Int) {

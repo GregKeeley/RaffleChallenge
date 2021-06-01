@@ -33,7 +33,7 @@ class MainRafflesViewController: UIViewController {
         configureCollectionView()
         fetchAllRaffles()
     }
-
+    
     //MARK:- Functions
     func configureCollectionView() {
         collectionView.dataSource = self
@@ -64,15 +64,17 @@ class MainRafflesViewController: UIViewController {
                 // Create empty container to store raffleViewModels
                 var dataRaffleViewModels = [RaffleViewModel]()
                 // Parsing through each Raffle
-                    let sortedRaffles = raffleData.sorted { $0.createdAt > $1.createdAt }
-                    for raffle in sortedRaffles {
-                        var raffleViewModel = RaffleViewModel(raffle: raffle, participantCount: 0)
-                        // Fetching participants for each Raffle
-                        raffleViewModel.numOfParticipants = self.fetchParticipantsForRaffle(raffleID: raffle.id)
-                        dataRaffleViewModels.append(raffleViewModel)
-                    }
-                    self.stillLoading = false
-                    self.raffleViewModels = dataRaffleViewModels
+                let sortedRaffles = raffleData.sorted { $0.createdAt > $1.createdAt }
+                for raffle in sortedRaffles {
+                    var raffleViewModel = RaffleViewModel(raffle: raffle, participantCount: 0)
+                    // Fetching participants for each Raffle
+                    let numOfParticipants = self.fetchParticipantsForRaffle(raffleID: raffle.id)
+                    print(numOfParticipants)
+                    raffleViewModel.numOfParticipants = numOfParticipants
+                    dataRaffleViewModels.append(raffleViewModel)
+                }
+                self.stillLoading = false
+                self.raffleViewModels = dataRaffleViewModels
             }
         }
         
@@ -111,6 +113,8 @@ extension MainRafflesViewController: UICollectionViewDataSource {
             let raffle = raffleViewModels[indexPath.row]
             cell.layer.cornerRadius = 4
             cell.configureCell(for: raffle, row: indexPath.row)
+            let numOfParticipants = fetchParticipantsForRaffle(raffleID: raffle.id)
+            cell.numOfParticipantsLabel.text = ("\(numOfParticipants) entries")
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "indicator", for: indexPath) as! IndicatorCollectionViewCell
