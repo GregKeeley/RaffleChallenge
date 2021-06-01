@@ -111,7 +111,7 @@ class RaffleDetailViewController: UIViewController {
             // Winner has already been selected
             winnerNameLabel.text = ("\(winnerID)")
             selectWinnerButton.isEnabled = false
-            selectWinnerLockButton.setImage(UIImage(systemName: "lock"), for: .disabled)
+            selectWinnerLockButton.setImage(UIImage(systemName: "lock.open"), for: .disabled)
             selectWinnerLockButton.isEnabled = false
             enterRaffleButton.isEnabled = false
             enterRaffleButton.backgroundColor = .systemGray5
@@ -142,7 +142,6 @@ class RaffleDetailViewController: UIViewController {
                 case .failure(let appError):
                     print("Something went wrong selecting a winner: \(appError)")
                 case .success(_):
-                    print("A winner has been selected!")
                     DispatchQueue.main.async {
                         self.fetchRaffleData()
                         self.updateUI()
