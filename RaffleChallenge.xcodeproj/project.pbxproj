@@ -120,6 +120,7 @@
 			children = (
 				37347CF326645BF0000827A1 /* DateExtension.swift */,
 				372EDBF02664947200E5887A /* UIViewControllerExtension.swift */,
+				37EFA995266165BF00410631 /* Network Services */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -149,7 +150,6 @@
 			children = (
 				37EFA9932661659000410631 /* Supporting Files */,
 				37347CF226645BDD000827A1 /* Extensions */,
-				37EFA995266165BF00410631 /* Network Services */,
 				37EFA996266165EC00410631 /* Models */,
 				37EFA99726616CC800410631 /* View Models */,
 				37EFA9942661659F00410631 /* View Controllers */,

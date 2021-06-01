@@ -61,13 +61,9 @@ class MainRafflesViewController: UIViewController {
             case .failure(let appError):
                 self.showAlert(title: "Something wetn", message: ("\(appError.localizedDescription)"))
             case .success(let raffleData):
-                var dataRaffleViewModels = [RaffleViewModel]() {
-                    didSet {
-                        print(dataRaffleViewModels.count)
-                    }
-                }
+                // Create empty container to store raffleViewModels
+                var dataRaffleViewModels = [RaffleViewModel]()
                 // Parsing through each Raffle
-//                DispatchQueue.main.async {
                     let sortedRaffles = raffleData.sorted { $0.createdAt > $1.createdAt }
                     for raffle in sortedRaffles {
                         var raffleViewModel = RaffleViewModel(raffle: raffle, participantCount: 0)
@@ -77,9 +73,6 @@ class MainRafflesViewController: UIViewController {
                     }
                     self.stillLoading = false
                     self.raffleViewModels = dataRaffleViewModels
-//                }
-                
-                
             }
         }
         

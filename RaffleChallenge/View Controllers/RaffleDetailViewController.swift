@@ -38,12 +38,12 @@ class RaffleDetailViewController: UIViewController {
         }
     }
     var raffleViewModels = [RaffleViewModel]()
-
     //MARK:- View Lifecycles
     override func viewWillAppear(_ animated: Bool) {
         fetchRaffleData()
         fetchRaffleParticipants()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
@@ -54,12 +54,17 @@ class RaffleDetailViewController: UIViewController {
         raffleNameLabel.adjustsFontSizeToFitWidth = true
         noOfWinnersLabel.adjustsFontSizeToFitWidth = true
         winnerNameLabel.adjustsFontSizeToFitWidth = true
+        selectWinnerButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        enterRaffleButton.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        enterRaffleButton.layer.cornerRadius = 4
         
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "RaffleCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "raffleCell")
         collectionView.backgroundColor = .systemGray5
     }
+    
     func fetchRaffleData() {
         guard let id = raffleID else {
             print("No raffle id")
@@ -93,23 +98,20 @@ class RaffleDetailViewController: UIViewController {
             }
         }
     }
+
     func updateUI() {
         noOfWinnersLabel.text = ("\(participants?.count ?? 0)")
         raffleIDLabel.text = ("#\(raffleID ?? -1)")
         raffleNameLabel.text = raffle?.name
-        enterRaffleButton.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
-        enterRaffleButton.layer.cornerRadius = 4
         
         let createdDate = Date.convertStringISO8601ToFormattedString(strDate: raffle?.createdAt ?? "No Date Available")
         createdDateLabel.text = createdDate
-        
-        selectWinnerButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
         if let winnerID = raffle?.winnerID {
             // Winner has already been selected
             winnerNameLabel.text = ("\(winnerID)")
             selectWinnerButton.isEnabled = false
-            selectWinnerLockButton.setImage(UIImage(systemName: "lock.open"), for: .normal)
+            selectWinnerLockButton.setImage(UIImage(systemName: "lock"), for: .disabled)
             selectWinnerLockButton.isEnabled = false
             enterRaffleButton.isEnabled = false
             enterRaffleButton.backgroundColor = .systemGray5
@@ -141,7 +143,10 @@ class RaffleDetailViewController: UIViewController {
                     print("Something went wrong selecting a winner: \(appError)")
                 case .success(_):
                     print("A winner has been selected!")
-                    self.fetchRaffleData()
+                    DispatchQueue.main.async {
+                        self.fetchRaffleData()
+                        self.updateUI()
+                    }
                 }
             }
         }))
@@ -156,7 +161,6 @@ class RaffleDetailViewController: UIViewController {
         enterRaffleViewController.addedParticipantDelegate = self
         navigationController?.present(enterRaffleViewController, animated: true)
     }
-    
     
 }
 
