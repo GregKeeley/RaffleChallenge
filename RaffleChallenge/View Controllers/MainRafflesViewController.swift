@@ -7,11 +7,9 @@
 
 import UIKit
 
-protocol CreatedNewRaffleDelegate: AnyObject {
-    func newRaffleCreated()
-}
 
 class MainRafflesViewController: UIViewController {
+    
     //MARK:-  IBOulets
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -27,7 +25,8 @@ class MainRafflesViewController: UIViewController {
         }
     }
     var stillLoading: Bool = false
-     
+    let refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
@@ -42,8 +41,14 @@ class MainRafflesViewController: UIViewController {
         collectionView.dragInteractionEnabled = true
         collectionView.register(UINib(nibName: "RaffleCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "raffleCell")
         collectionView.register(IndicatorCollectionViewCell.self, forCellWithReuseIdentifier: "indicator")
+        collectionView.addSubview(refreshControl)
+        refreshControl.addTarget(self, action: #selector(refreshControlFunctions(_:)), for: .valueChanged)
     }
-    
+    @objc func refreshControlFunctions(_ sender: Any) {
+        raffleViewModels.removeAll()
+        fetchAllRaffles()
+        refreshControl.endRefreshing()
+    }
     func configureViewController() {
         navigationItem.title = "All Raffles"
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -52,40 +57,50 @@ class MainRafflesViewController: UIViewController {
     func fetchAllRaffles() {
         RaffleAPIClient.fetchAllRaffles { (results) in
             self.stillLoading = true
-            
             switch results {
             case .failure(let appError):
                 self.showAlert(title: "Something wetn", message: ("\(appError.localizedDescription)"))
             case .success(let raffleData):
+                var dataRaffleViewModels = [RaffleViewModel]() {
+                    didSet {
+                        print(dataRaffleViewModels.count)
+                    }
+                }
                 // Parsing through each Raffle
-                DispatchQueue.main.async {
+//                DispatchQueue.main.async {
                     let sortedRaffles = raffleData.sorted { $0.createdAt > $1.createdAt }
                     for raffle in sortedRaffles {
                         var raffleViewModel = RaffleViewModel(raffle: raffle, participantCount: 0)
                         // Fetching participants for each Raffle
-                        RaffleAPIClient.fetchParticipantsForRaffle(raffleID: raffle.id) { (result) in
-                            switch result {
-                            case .failure(let appError):
-                                print("Could not load participants: \(appError)")
-                            case .success(let data):
-                                raffleViewModel.numOfParticipants = data.count
-                                self.raffleViewModels.append(raffleViewModel)
-                            }
-                        }
+                        raffleViewModel.numOfParticipants = self.fetchParticipantsForRaffle(raffleID: raffle.id)
+                        dataRaffleViewModels.append(raffleViewModel)
                     }
-                }
-                DispatchQueue.main.async {
                     self.stillLoading = false
-                    self.collectionView.reloadData()
-                }
+                    self.raffleViewModels = dataRaffleViewModels
+//                }
+                
+                
             }
         }
         
     }
+    func fetchParticipantsForRaffle(raffleID: Int) -> Int {
+        var numOfParticipants = 0
+        RaffleAPIClient.fetchParticipantsForRaffle(raffleID: raffleID) { (result) in
+            switch result {
+            case .failure(let appError):
+                print("Could not fetch participants: \(appError)")
+            case .success(let data):
+                numOfParticipants = data.count
+            }
+        }
+        return numOfParticipants
+    }
+    //MARK:- @IBActions
     @IBAction func createRaffleButtonPressed(_ sender: UIBarButtonItem) {
-        let createRaffleViewController = CreateRaffleViewController()
+        let createRaffleViewController = self.storyboard?.instantiateViewController(identifier: "createRaffleViewController") as! CreateRaffleViewController
         createRaffleViewController.createdNewRaffleDelegate = self
-        show(createRaffleViewController, sender: self)
+        navigationController?.pushViewController(createRaffleViewController, animated: true)
     }
 }
 
@@ -138,6 +153,7 @@ extension MainRafflesViewController: UICollectionViewDelegateFlowLayout {
 
 extension MainRafflesViewController: CreatedNewRaffleDelegate {
     func newRaffleCreated() {
+        raffleViewModels.removeAll()
         fetchAllRaffles()
         collectionView.reloadData()
     }

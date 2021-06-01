@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CreatedNewRaffleDelegate: AnyObject {
+    func newRaffleCreated()
+}
+
 class CreateRaffleViewController: UIViewController {
     
     //MARK:- IBOutlets
@@ -19,6 +23,8 @@ class CreateRaffleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    override func viewDidAppear(_ animated: Bool) {
         configureUI()
     }
     //MARK:- Functions
@@ -49,3 +55,4 @@ class CreateRaffleViewController: UIViewController {
         
     }
 }
+
