@@ -12,15 +12,11 @@
 		372EDBF12664947200E5887A /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372EDBF02664947200E5887A /* UIViewControllerExtension.swift */; };
 		372EDBF3266543A100E5887A /* AddParticipantResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372EDBF2266543A100E5887A /* AddParticipantResponseModel.swift */; };
 		372EDBF5266566E700E5887A /* IndicatorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372EDBF4266566E700E5887A /* IndicatorCollectionViewCell.swift */; };
-		373012D32665E66A0085A9C5 /* iPhone12_NoWinnerDetailVC.png in Resources */ = {isa = PBXBuildFile; fileRef = 373012CE2665E66A0085A9C5 /* iPhone12_NoWinnerDetailVC.png */; };
-		373012D42665E66A0085A9C5 /* iPhone12_CreateRafflePrompt.png in Resources */ = {isa = PBXBuildFile; fileRef = 373012CF2665E66A0085A9C5 /* iPhone12_CreateRafflePrompt.png */; };
-		373012D52665E66A0085A9C5 /* iPhone12_CreateRaffle.png in Resources */ = {isa = PBXBuildFile; fileRef = 373012D02665E66A0085A9C5 /* iPhone12_CreateRaffle.png */; };
-		373012D62665E66A0085A9C5 /* iPhone12_WinnerDetailVC.png in Resources */ = {isa = PBXBuildFile; fileRef = 373012D12665E66A0085A9C5 /* iPhone12_WinnerDetailVC.png */; };
-		373012D72665E66A0085A9C5 /* iPhone12_MainVC.png in Resources */ = {isa = PBXBuildFile; fileRef = 373012D22665E66A0085A9C5 /* iPhone12_MainVC.png */; };
 		37347CF426645BF0000827A1 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37347CF326645BF0000827A1 /* DateExtension.swift */; };
 		373579DA2662BF5A002D264C /* RaffleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 373579D92662BF5A002D264C /* RaffleCollectionViewCell.xib */; };
 		373579DC2662C075002D264C /* RaffleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373579DB2662C075002D264C /* RaffleCollectionViewCell.swift */; };
 		3777F92E2663CBF900441D57 /* RaffleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3777F92D2663CBF900441D57 /* RaffleDetailViewController.swift */; };
+		37C65DDF2668018A003F11C6 /* Media in Resources */ = {isa = PBXBuildFile; fileRef = 37C65DDE2668018A003F11C6 /* Media */; };
 		37EFA9642661653F00410631 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EFA9632661653F00410631 /* AppDelegate.swift */; };
 		37EFA9662661653F00410631 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EFA9652661653F00410631 /* SceneDelegate.swift */; };
 		37EFA9682661653F00410631 /* MainRafflesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EFA9672661653F00410631 /* MainRafflesViewController.swift */; };
@@ -59,15 +55,11 @@
 		372EDBF02664947200E5887A /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		372EDBF2266543A100E5887A /* AddParticipantResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddParticipantResponseModel.swift; sourceTree = "<group>"; };
 		372EDBF4266566E700E5887A /* IndicatorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorCollectionViewCell.swift; sourceTree = "<group>"; };
-		373012CE2665E66A0085A9C5 /* iPhone12_NoWinnerDetailVC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPhone12_NoWinnerDetailVC.png; path = ../../../../Desktop/iPhone12_NoWinnerDetailVC.png; sourceTree = "<group>"; };
-		373012CF2665E66A0085A9C5 /* iPhone12_CreateRafflePrompt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPhone12_CreateRafflePrompt.png; path = ../../../../Desktop/iPhone12_CreateRafflePrompt.png; sourceTree = "<group>"; };
-		373012D02665E66A0085A9C5 /* iPhone12_CreateRaffle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPhone12_CreateRaffle.png; path = ../../../../Desktop/iPhone12_CreateRaffle.png; sourceTree = "<group>"; };
-		373012D12665E66A0085A9C5 /* iPhone12_WinnerDetailVC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPhone12_WinnerDetailVC.png; path = ../../../../Desktop/iPhone12_WinnerDetailVC.png; sourceTree = "<group>"; };
-		373012D22665E66A0085A9C5 /* iPhone12_MainVC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPhone12_MainVC.png; path = ../../../../Desktop/iPhone12_MainVC.png; sourceTree = "<group>"; };
 		37347CF326645BF0000827A1 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		373579D92662BF5A002D264C /* RaffleCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RaffleCollectionViewCell.xib; sourceTree = "<group>"; };
 		373579DB2662C075002D264C /* RaffleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleCollectionViewCell.swift; sourceTree = "<group>"; };
 		3777F92D2663CBF900441D57 /* RaffleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleDetailViewController.swift; sourceTree = "<group>"; };
+		37C65DDE2668018A003F11C6 /* Media */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Media; sourceTree = "<group>"; };
 		37EFA9602661653F00410631 /* RaffleChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaffleChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37EFA9632661653F00410631 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37EFA9652661653F00410631 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,18 +115,6 @@
 			path = "CollectionView Cells";
 			sourceTree = "<group>";
 		};
-		373012CD2665E55D0085A9C5 /* Media */ = {
-			isa = PBXGroup;
-			children = (
-				373012D02665E66A0085A9C5 /* iPhone12_CreateRaffle.png */,
-				373012CF2665E66A0085A9C5 /* iPhone12_CreateRafflePrompt.png */,
-				373012D22665E66A0085A9C5 /* iPhone12_MainVC.png */,
-				373012CE2665E66A0085A9C5 /* iPhone12_NoWinnerDetailVC.png */,
-				373012D12665E66A0085A9C5 /* iPhone12_WinnerDetailVC.png */,
-			);
-			path = Media;
-			sourceTree = "<group>";
-		};
 		37347CF226645BDD000827A1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,7 +148,7 @@
 		37EFA9622661653F00410631 /* RaffleChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				373012CD2665E55D0085A9C5 /* Media */,
+				37C65DDE2668018A003F11C6 /* Media */,
 				37EFA9932661659000410631 /* Supporting Files */,
 				37347CF226645BDD000827A1 /* Extensions */,
 				37EFA996266165EC00410631 /* Models */,
@@ -361,11 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				373579DA2662BF5A002D264C /* RaffleCollectionViewCell.xib in Resources */,
-				373012D52665E66A0085A9C5 /* iPhone12_CreateRaffle.png in Resources */,
-				373012D72665E66A0085A9C5 /* iPhone12_MainVC.png in Resources */,
-				373012D62665E66A0085A9C5 /* iPhone12_WinnerDetailVC.png in Resources */,
-				373012D42665E66A0085A9C5 /* iPhone12_CreateRafflePrompt.png in Resources */,
-				373012D32665E66A0085A9C5 /* iPhone12_NoWinnerDetailVC.png in Resources */,
+				37C65DDF2668018A003F11C6 /* Media in Resources */,
 				37EFA9702661654000410631 /* LaunchScreen.storyboard in Resources */,
 				37EFA96D2661654000410631 /* Assets.xcassets in Resources */,
 				37EFA96B2661653F00410631 /* Main.storyboard in Resources */,
