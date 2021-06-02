@@ -148,7 +148,6 @@
 		37EFA9622661653F00410631 /* RaffleChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				37C65DDE2668018A003F11C6 /* Media */,
 				37EFA9932661659000410631 /* Supporting Files */,
 				37347CF226645BDD000827A1 /* Extensions */,
 				37EFA996266165EC00410631 /* Models */,
@@ -182,6 +181,7 @@
 		37EFA9932661659000410631 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				37C65DDE2668018A003F11C6 /* Media */,
 				37EFA9632661653F00410631 /* AppDelegate.swift */,
 				37EFA9652661653F00410631 /* SceneDelegate.swift */,
 				37EFA96C2661654000410631 /* Assets.xcassets */,
