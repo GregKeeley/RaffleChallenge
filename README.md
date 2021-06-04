@@ -9,10 +9,22 @@ The data for this app is retrieved through the use of several endpoints provided
 When originally working on this project, it was built with MVC allowing me to quickly build a prototype in a familiar fashion. After the general framework was laid out, including UI (via Storyboard), I was able to refactor to MVVM. This provided the distinct advantage of allowing me to use a single data type, to pass around the view controllers which contained all of the properties I needed without having to constantly make network calls to get my data.
 
 ### Screenshots
-Coming soon
+Viewing all raffles
+
+<img src="https://github.com/GregKeeley/RaffleChallenge/blob/main/RaffleChallenge/Supporting%20Files/Media/iPhone12_MainVC.png" width="250">
+
+Creating a raffle - Reminding user to make note of their password
+
+<img src="https://github.com/GregKeeley/RaffleChallenge/blob/main/RaffleChallenge/Supporting%20Files/Media/iPhone12_CreateRafflePrompt.png" width="250">
+
+Detail view for a raffle with a winner selected
+
+<img src="https://github.com/GregKeeley/RaffleChallenge/blob/main/RaffleChallenge/Supporting%20Files/Media/iPhone12_WinnerDetailVC.png" width="250">
+
+
 
 ### Known Bugs
-- Dates don't display correctly 
+- Dates are displayed in ISO8601 Format
 - Number of participants in the collection view doesn't display correctly
 
 ### Future Implementations
